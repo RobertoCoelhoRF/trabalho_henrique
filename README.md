@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# Estude Já
 
-## Getting Started
+Sistema web para gerenciar tarefas e matérias com Next.js e PostgreSQL Neon.
 
-First, run the development server:
+##  Features
 
-```bash
+-  Listar todas as tarefas com suas matérias
+-  Criar novas tarefas com descrição, prazo e matéria
+-  Editar tarefas existentes
+-  Deletar tarefas
+-  Gerenciar matérias
+-  Banco de dados PostgreSQL Neon
+
+##  Tech Stack
+
+- **Frontend**: Next.js 16, React 19, CSS Modules
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSQL (Neon)
+- **Build Tool**: Turbopack
+
+##  Endpoints da API
+
+### Tasks
+- `GET /api/tasks` - Listar todas
+- `POST /api/tasks` - Criar nova
+- `GET /api/tasks/[id]` - Obter uma
+- `PUT /api/tasks/[id]` - Atualizar
+- `DELETE /api/tasks/[id]` - Deletar
+
+### Subjects (Matérias)
+- `GET /api/subjects` - Listar todas
+- `POST /api/subjects` - Criar nova
+
+##  Como Usar
+
+### Instalação
+
+`ash
+npm install
+`
+
+### Setup do Banco de Dados
+
+`ash
+node setup-database.js
+`
+
+### Desenvolvimento
+
+`ash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse http://localhost:3000
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`ash
+npm run build
+npm run start
+`
 
-## Learn More
+##  Banco de Dados
 
-To learn more about Next.js, take a look at the following resources:
+**Tabelas:**
+- `materias` (id, nome, created_at)
+- `tarefas` (id, titulo, descricao, prazo, materia_id, created_at)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+##  Dependências
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- next@16.0.10
+- react@19.2.1
+- react-dom@19.2.1
+- pg@8.x (PostgreSQL driver)
