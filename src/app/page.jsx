@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 export default function Home() {
   const [tarefas, setTarefas] = useState([]);
@@ -66,7 +66,11 @@ export default function Home() {
         },
       });
 
-      if (!res.ok) throw new Error('Erro ao deletar tarefa');
+      if (!res.ok) {
+        const errorBody = await res.text();
+        throw new Error(errorBody || 'Erro ao deletar tarefa');
+      }
+
       setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
     } catch (err) {
       alert('Erro ao deletar tarefa: ' + err.message);

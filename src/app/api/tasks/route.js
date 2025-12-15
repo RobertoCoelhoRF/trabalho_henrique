@@ -1,6 +1,5 @@
 import { query } from '@/lib/db';
 
-// GET /api/tasks - Listar todas as tarefas
 export async function GET(request) {
   try {
     const result = await query(
@@ -14,7 +13,6 @@ export async function GET(request) {
   }
 }
 
-// POST /api/tasks - Criar nova tarefa
 export async function POST(request) {
   try {
     const body = await request.json();

@@ -1,6 +1,5 @@
 import { query } from '@/lib/db';
 
-// GET /api/subjects - Listar todas as matérias
 export async function GET(request) {
   try {
     const result = await query(
@@ -14,7 +13,6 @@ export async function GET(request) {
   }
 }
 
-// POST /api/subjects - Criar nova matéria
 export async function POST(request) {
   try {
     const body = await request.json();
